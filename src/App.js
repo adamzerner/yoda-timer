@@ -28,7 +28,7 @@ const App = () => {
 
   return (
     <section>
-      <section>{numSecondsLeft}</section>
+      <Display numSecondsLeft={numSecondsLeft} />
       <section>
         <button type="button" onClick={start} disabled={isActive}>
           Start
@@ -41,6 +41,18 @@ const App = () => {
         </button>
       </section>
       <section>Yoda</section>
+    </section>
+  );
+};
+
+const Display = ({ numSecondsLeft }) => {
+  const mins = Math.floor(numSecondsLeft / 60);
+  const seconds = numSecondsLeft % 60;
+  const secondsDisplay = seconds < 10 ? `0${seconds}` : seconds;
+
+  return (
+    <section>
+      {mins}:{secondsDisplay}
     </section>
   );
 };
