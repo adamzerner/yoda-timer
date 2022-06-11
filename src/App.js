@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
 
 const App = () => {
   const [isActive, setIsActive] = useState(false);
@@ -27,21 +29,31 @@ const App = () => {
   }, [isActive]);
 
   return (
-    <section>
+    <Container>
       <Display numSecondsLeft={numSecondsLeft} />
       <section>
-        <button type="button" onClick={start} disabled={isActive}>
+        <Button
+          type="button"
+          variant="secondary"
+          onClick={start}
+          disabled={isActive}
+        >
           Start
-        </button>
-        <button type="button" onClick={pause}>
+        </Button>
+        <Button type="button" variant="secondary" onClick={pause}>
           Pause
-        </button>
-        <button type="button" onClick={reset} disabled={!isActive}>
+        </Button>
+        <Button
+          type="button"
+          variant="secondary"
+          onClick={reset}
+          disabled={!isActive}
+        >
           Reset
-        </button>
+        </Button>
       </section>
       <section>Yoda</section>
-    </section>
+    </Container>
   );
 };
 
