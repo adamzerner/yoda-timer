@@ -7,7 +7,7 @@ import InfoModal from "./InfoModal.js";
 
 const App = () => {
   const [isActive, setIsActive] = useState(false);
-  const [numSecondsLeft, setNumSecondsLeft] = useState(60 * 5);
+  const [numSecondsLeft, setNumSecondsLeft] = useState(3);
   const [isInfoModalVisible, setIsInfoModalVisible] = useState(false);
   const start = () => {
     setIsActive(true);
@@ -33,9 +33,10 @@ const App = () => {
           if (n > 1) {
             return n - 1;
           } else if (n === 1) {
+            new Audio("./ding.mp3").play();
             setIsActive(false);
 
-            return 5 * 60;
+            return 3;
           }
         });
       }, 1000);
