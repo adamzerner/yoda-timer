@@ -39,6 +39,9 @@ const App = () => {
   return (
     <Container className="mt-5">
       <Card className="text-center">
+        <Card.Header>
+          <i class="bi bi-info-circle float-end"></i>
+        </Card.Header>
         <Card.Body>
           <Display numSecondsLeft={numSecondsLeft} />
           <Image
