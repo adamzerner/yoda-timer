@@ -1,7 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
+// eslint-disable-next-line
 import "bootstrap/dist/css/bootstrap.min.css";
+// eslint-disable-next-line
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
