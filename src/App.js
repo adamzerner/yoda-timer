@@ -7,7 +7,7 @@ import InfoModal from "./InfoModal.js";
 
 const App = () => {
   const [isActive, setIsActive] = useState(false);
-  const [numSecondsLeft, setNumSecondsLeft] = useState(3);
+  const [numSecondsLeft, setNumSecondsLeft] = useState(5 * 60);
   const [isInfoModalVisible, setIsInfoModalVisible] = useState(false);
   const start = () => {
     setIsActive(true);
@@ -20,7 +20,7 @@ const App = () => {
 
     if (shouldContinue) {
       setIsActive(false);
-      setNumSecondsLeft(60 * 5);
+      setNumSecondsLeft(5 * 60);
     }
   };
 
@@ -36,7 +36,7 @@ const App = () => {
             new Audio("./ding.mp3").play();
             setIsActive(false);
 
-            return 3;
+            return 5 * 60;
           }
         });
       }, 1000);
