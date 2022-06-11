@@ -3,10 +3,12 @@ import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
+import InfoModal from "./InfoModal.js";
 
 const App = () => {
   const [isActive, setIsActive] = useState(false);
   const [numSecondsLeft, setNumSecondsLeft] = useState(60 * 5);
+  const [isInfoModalVisible, setIsInfoModalVisible] = useState(false);
   const start = () => {
     setIsActive(true);
   };
@@ -40,7 +42,11 @@ const App = () => {
     <Container className="mt-5">
       <Card className="text-center">
         <Card.Header>
-          <i class="bi bi-info-circle float-end"></i>
+          <i
+            className="bi bi-info-circle float-end"
+            onClick={() => setIsInfoModalVisible(true)}
+            style={{ cursor: "pointer" }}
+          ></i>
         </Card.Header>
         <Card.Body>
           <Display numSecondsLeft={numSecondsLeft} />
@@ -77,6 +83,10 @@ const App = () => {
           </Button>
         </Card.Footer>
       </Card>
+      <InfoModal
+        show={isInfoModalVisible}
+        handleClose={() => setIsInfoModalVisible(false)}
+      />
     </Container>
   );
 };
