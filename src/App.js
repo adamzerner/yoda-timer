@@ -70,6 +70,7 @@ const App = () => {
             variant="secondary"
             onClick={pause}
             className="me-2"
+            disabled={!isActive}
           >
             Pause
           </Button>
