@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
+import Card from "react-bootstrap/Card";
+import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
 
 const App = () => {
@@ -10,8 +12,14 @@ const App = () => {
   };
   const pause = () => alert("Pause a Yoda Timer, one shall not.");
   const reset = () => {
-    setIsActive(false);
-    setNumSecondsLeft(60 * 5);
+    const shouldContinue = window.confirm(
+      "Precommitment, a Yoda Timer implies. Are you sure you want to reset?"
+    );
+
+    if (shouldContinue) {
+      setIsActive(false);
+      setNumSecondsLeft(60 * 5);
+    }
   };
 
   useEffect(() => {
@@ -29,30 +37,43 @@ const App = () => {
   }, [isActive]);
 
   return (
-    <Container>
-      <Display numSecondsLeft={numSecondsLeft} />
-      <section>
-        <Button
-          type="button"
-          variant="secondary"
-          onClick={start}
-          disabled={isActive}
-        >
-          Start
-        </Button>
-        <Button type="button" variant="secondary" onClick={pause}>
-          Pause
-        </Button>
-        <Button
-          type="button"
-          variant="secondary"
-          onClick={reset}
-          disabled={!isActive}
-        >
-          Reset
-        </Button>
-      </section>
-      <section>Yoda</section>
+    <Container className="mt-5">
+      <Card className="text-center">
+        <Card.Body>
+          <Display numSecondsLeft={numSecondsLeft} />
+          <Image
+            src="https://i.ytimg.com/vi/m5gVQvYNUdI/maxresdefault.jpg"
+            width="250"
+          />
+        </Card.Body>
+        <Card.Footer>
+          <Button
+            type="button"
+            variant="secondary"
+            onClick={start}
+            disabled={isActive}
+            className="me-2"
+          >
+            Start
+          </Button>
+          <Button
+            type="button"
+            variant="secondary"
+            onClick={pause}
+            className="me-2"
+          >
+            Pause
+          </Button>
+          <Button
+            type="button"
+            variant="secondary"
+            onClick={reset}
+            disabled={!isActive}
+          >
+            Reset
+          </Button>
+        </Card.Footer>
+      </Card>
     </Container>
   );
 };
@@ -63,7 +84,7 @@ const Display = ({ numSecondsLeft }) => {
   const secondsDisplay = seconds < 10 ? `0${seconds}` : seconds;
 
   return (
-    <section>
+    <section style={{ fontFamily: "monospace", fontSize: 64 }}>
       {mins}:{secondsDisplay}
     </section>
   );
