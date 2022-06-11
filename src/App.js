@@ -29,7 +29,15 @@ const App = () => {
 
     if (isActive) {
       interval = setInterval(() => {
-        setNumSecondsLeft((n) => n - 1);
+        setNumSecondsLeft((n) => {
+          if (n > 1) {
+            return n - 1;
+          } else if (n === 1) {
+            setIsActive(false);
+
+            return 5 * 60;
+          }
+        });
       }, 1000);
     } else {
       clearInterval(interval);
