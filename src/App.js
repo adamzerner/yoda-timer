@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import splitbee from "@splitbee/web";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
@@ -11,6 +12,7 @@ const App = () => {
   const [isInfoModalVisible, setIsInfoModalVisible] = useState(false);
   const start = () => {
     setIsActive(true);
+    splitbee.track("Timer Started");
   };
   const pause = () => alert("Pause a Yoda Timer, one shall not.");
   const reset = () => {
@@ -21,6 +23,7 @@ const App = () => {
     if (shouldContinue) {
       setIsActive(false);
       setNumSecondsLeft(5 * 60);
+      splitbee.track("Timer Reset");
     }
   };
 
@@ -35,6 +38,7 @@ const App = () => {
           } else if (n === 1) {
             new Audio("./ding.mp3").play();
             setIsActive(false);
+            splitbee.track("Timer Ended");
 
             return 5 * 60;
           }
